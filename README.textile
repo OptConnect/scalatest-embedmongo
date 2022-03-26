@@ -14,7 +14,7 @@ h2. Roadmap
 * trait to use embedMongo fixture          OK (0.1 version)
 * deploy on maven central                  OK (0.1 version)
 * build on scala 2.10                      OK (0.2 version)
-* cross compilation 2.9 & 2.10             OK (0.2 version)
+* cross compilation 2.9 & 2.10, 2.13       OK (1.0.0 version)
 * manage port uses for parallel testing    TODO
 * helpers for setup test with embedMongo   TODO
 
@@ -23,17 +23,17 @@ h2. Installation
 h3. Git repo
 
 scalatest-embedmongo is a SBT project.
-It use 0.13.13 sbt version.
-Only the following Scala versions 2.11 & 2.12 are currently supported.
-The current version of the library is 0.2.4.
+It use 1.6.2 sbt version.
+Only the following Scala versions 2.11 & 2.12 & 2.13 are currently supported.
+The current version of the library is 1.0.0.
 
 h3. Maven dependency
 
 <pre><code>
     <dependency>
         <groupId>com.github.simplyscala</groupId>
-        <artifactId>scalatest-embedmongo_2.12</artifactId>
-        <version>0.2.4</version>
+        <artifactId>scalatest-embedmongo_2.13</artifactId>
+        <version>1.0.0</version>
         <scope>test</scope>
     </dependency>
 </code></pre>
@@ -41,45 +41,13 @@ h3. Maven dependency
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.4" % "test"
-</code></pre>
-
-h3. Simple JAR file
-
-"0.2.4 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.12/0.2.4/scalatest-embedmongo_2.12-0.2.4.jar
-
-h3. Try SNAPSHOT version
-
-You could be tempted to try SNAPSHOT version to test project's next features.
-
-h4. with Maven
-
-<pre><code>
-<project ...>
-
-   <repositories>
-      <repository>
-         <id>maven snapshot</id>
-         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-      </repository>
-   </repositories>
-
-   ...
-
-   <dependency>
-      <groupId>com.github.simplyscala</groupId>
-        <artifactId>scalatest-embedmongo_2.12</artifactId>
-        <version>0.2.5-SNAPSHOT</version>
-        <scope>test</scope>
-    </dependency>
+    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "1.0.0" % "test",
 </code></pre>
 
 h4. with SBT
 
 <pre><code>
-   resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-
-   libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.5-SNAPSHOT"
+   resolvers += "SSO" at "https://nginx.org/nexus/content/repositories"
 </code></pre>
 
 h2. Usage

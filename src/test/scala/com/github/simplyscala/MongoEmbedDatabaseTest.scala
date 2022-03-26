@@ -1,19 +1,22 @@
 package com.github.simplyscala
 
 import org.mongodb.scala.bson.collection.immutable.Document
-import org.scalatest.{BeforeAndAfter, FunSuite, Matchers}
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.BeforeAndAfter
 import Helpers._
-class MongoEmbedDatabaseTest extends FunSuite with Matchers with BeforeAndAfter with MongoEmbedDatabase {
+import org.scalatest.matchers.should.Matchers
 
-    var mongoProps: MongodProps = null
+class MongoEmbedDatabaseTest extends AnyFunSuite with Matchers with BeforeAndAfter with MongoEmbedDatabase {
 
-    before { mongoProps = mongoStart(33333) }
+  var mongoProps: MongodProps = null
 
-    after { mongoStop(mongoProps) }
+  before { mongoProps = mongoStart(33333) }
 
-    test("test connection with embed mongodb") {
-      val conn = Connector.getCollection(Connector.conf2)
-      conn.insertOne(document = Document("name" -> "testFixture")).results()
-      conn.count().headResult() should be (1)
-    }
+  after { mongoStop(mongoProps) }
+
+  test("test connection with embed mongodb") {
+    val conn = Connector.getCollection(Connector.conf2)
+    conn.insertOne(document = Document("name" -> "testFixture")).results()
+    conn.countDocuments().headResult() should be (1)
+  }
 }
